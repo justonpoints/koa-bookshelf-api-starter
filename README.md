@@ -3,7 +3,7 @@ Koa Bookshelf passport starter files
 
 install : node, postrges(create a database)
 
-1. git clone https://github.com/justonpoints/koa-bookshelf-api
+1. git clone https://github.com/justonpoints/koa-bookshelf-api-starter.git
 2. npm install (in the root of the app)
 3. Add Postgres creds to index.js knex connection
 4. Update table name in lib/api/api.js
