@@ -13,10 +13,10 @@ install : node, postrges(create a database)
 http://localhost:1337/api/login?username=foo&password=bar 
 
 6. Make a sample query
-	Create : http://localhost:1337/api/test/ (Post)
-	SelectById : http://localhost:1337/api/test/{id} (GET)
-	Update : http://localhost:1337/api/test/{id} Postdata:[data to update](PUT)
-	DELETE : http://localhost:1337/api/test/{id} (DELETE)
+	- Create : http://localhost:1337/api/test/ (Post)
+	- SelectById : http://localhost:1337/api/test/{id} (GET)
+	- Update : http://localhost:1337/api/test/{id} Postdata:[data to update](PUT)
+	- DELETE : http://localhost:1337/api/test/{id} (DELETE)
 
 
 Plans: 
