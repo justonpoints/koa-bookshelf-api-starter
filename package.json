@@ -1,0 +1,40 @@
+{
+  "name": "koa-bookshelf-api",
+  "version": "0.0.1",
+  "description": "koa-bookshelf-api-start application",
+  "keywords": [
+    "koa",
+    "api",
+    "postgres",
+    "passport"
+  ],
+  "main": "index",
+  "author": {
+    "name": "Juston Points",
+    "email": "justonpoints@gmail.com"
+  },
+  "repository": {
+  },
+  "dependencies": {
+    "koa": "*",
+    "koa-better-ratelimit": "*",
+    "koa-body":"*",
+    "koa-compress": "*",
+    "koa-generic-session":"*",
+    "koa-logger": "*",
+    "koa-mount": "*",
+    "koa-passport":"*",
+    "passport-local":"*",
+    "koa-request":"*",
+    "koa-router": "*",
+    "knex":"*",
+    "bookshelf":"*",
+    "pg":"*",
+    "co-pg":"*"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.11.13"
+  },
+  "devDependencies": {}
+}
