@@ -1,5 +1,7 @@
-//node libraries, should also be contained in the /package.json file
 //Philosophy, load all depedencies at initialization.
+
+//------------------------------------------------------------------------------------------------------------------------
+//node libraries, should also be contained in the /package.json file
 var koa = require('koa');
 var koa_router = require('koa-router');
 var body = require('koa-body')();
@@ -9,7 +11,6 @@ var mount = require('koa-mount');
 var logger = require('koa-logger');
 var limit = require('koa-better-ratelimit');
 var pg = require('co-pg')(require('pg'));
-
 var knex = require('knex')({
   client: 'postgresql',
   connection: {
@@ -22,7 +23,6 @@ var knex = require('knex')({
   }//move this to a config file.
 });
 var Bookshelf = require('bookshelf')(knex);
-
 var passport = require('koa-passport');
 var local = require('passport-local').Strategy;
 
@@ -36,9 +36,12 @@ var public_api = require('./lib/api/public_api.js')(auth);//api that can accesse
 //initializers
 var app = koa();
 var router = new koa_router(); //this is for the authenticated api
+require('./lib/routes.js')(router, body, api);//intialize routes
 var public_router = new koa_router();//for the non-authenicated api.
+require('./lib/public_routes.js')(public_router, body, public_api);//intialize public routes
+//------------------------------------------------------------------------------------------------------------------------
 
-
+//-------Start Event Loop-------------------------------------------------------------------------------------------------
 //__________________________________________________________________ 
 //The component order is important.
 //Each of the middleware component are organized into nodes that require the koa "app".
@@ -60,14 +63,24 @@ nodes.limiter(app,limit);
 nodes.session(app,session,auth);
 
 //routes accessible without a session. This includes login and log out.
-nodes.public_routes(app,public_router,mount,body,public_api);
+// If route matches public api, then process the route. Terminate downflow
+// If route does not match public route, then move to validation.
+nodes.public_router(app,public_router,mount,body,public_api);
+
+//validate session
+// If validated, move to public routes.
+// If not validated, then return 400 error.
+nodes.validate(app);
 
 //The following routes require a valid session.
-nodes.routes(app,router,mount,body,api);
+//For routes see ./lib/routes.js
+nodes.router(app,router,mount);
 
 if (!module.parent) app.listen(1337);//move the port to a config file.
 console.log('the Api is running on port 1337');
-//__________________________________________________________________
+
+//------------------------------------------------------------------------------------------------------------------------
+
 
 
   
