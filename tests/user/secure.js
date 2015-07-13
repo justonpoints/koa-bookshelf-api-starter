@@ -2,7 +2,7 @@ module.exports = function(assert,request){
    describe('No active session', function(){
       
       it('Get User Secured? /user/:id', function (done) {
-        request.get({url:'http://localhost:1337/api/test/1'}, function (err, res, body){
+        request.get({url:'http://localhost:1337/api/user/1'}, function (err, res, body){
           assert.equal(res.statusCode, 400);
           assert.equal(res.body, '{"error":"no active session"}');
           done();
@@ -10,7 +10,7 @@ module.exports = function(assert,request){
       });
 
       it('Put User Secured? /user/:id [post data]', function (done) {
-        request.put({url:'http://localhost:1337/api/test/1', json:{name:"charley"}}, function (err, res, body){
+        request.put({url:'http://localhost:1337/api/user/1', json:{name:"charley"}}, function (err, res, body){
           var data = JSON.stringify(res.body);
           assert.equal(res.statusCode, 400);
           assert.equal(data, '{"error":"no active session"}');
@@ -19,7 +19,7 @@ module.exports = function(assert,request){
       });
 
       it('Post User Secured? /user [post data]', function (done) {
-        request.post({url:'http://localhost:1337/api/test', json:{name:"charley",password:"monkey"}}, function (err, res, body){
+        request.post({url:'http://localhost:1337/api/user', json:{name:"charley",password:"monkey"}}, function (err, res, body){
           var data = JSON.stringify(res.body);
           assert.equal(res.statusCode, 400);
           assert.equal(data, '{"error":"no active session"}');
@@ -28,7 +28,7 @@ module.exports = function(assert,request){
       });
 
       it('Delete User Secured? /user/:id', function (done) {
-        request.del({url:'http://localhost:1337/api/test/1'}, function (err, res, body){
+        request.del({url:'http://localhost:1337/api/user/1'}, function (err, res, body){
           assert.equal(res.statusCode, 400);
           assert.equal(res.body, '{"error":"no active session"}');
           done();

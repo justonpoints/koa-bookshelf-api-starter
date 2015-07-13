@@ -1,7 +1,7 @@
 {
   "name": "koa-bookshelf-api",
   "version": "0.0.1",
-  "description": "koa-bookshelf-api-start application",
+  "description": "koa-bookshelf-api-passport-start application",
   "keywords": [
     "koa",
     "api",
@@ -30,26 +30,31 @@
     "knex":"*",
     "bookshelf":"*",
     "pg":"*",
-    "co-pg":"*"
+    "co-pg":"*",
+    "checkit":"*"
   },
   "license": "MIT",
   "engines": {
     "node": ">= 0.11.13"
   },
   "devDependencies": {
-     "karma": "~0.10",
-     "protractor": "^1.1.1"
+    "mocha":"*"
   },
   "scripts": {
     
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",
 
+    "migration":"knex migrate:latest",
+    "test-data":"knex seed:run test_data",
+    
+    "migration-seed":"knex migrate:latest",
+    "postmigration-seed":"knex seed:run test_data",
+
     "pretest": "npm install",
     "test": "mocha tests/test.js",
-    "test-single-run": "karma start karma.conf.js  --single-run",
 
-    "pree2e": "npm run update-webdriver",
-    "e2e": "protractor ./tests/protractor.conf.js"
+    "pretest-seed":"knex seed:run test_data",
+    "test-seed": "mocha tests/test.js"
   }
 }
