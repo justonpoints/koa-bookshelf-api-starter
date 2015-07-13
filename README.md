@@ -27,7 +27,7 @@ Quick reference to add an api in this enviroment.
 1. Create migration file. (add seed data if desired)
 2. Create a book in the /lib/books directory, add the book to the bookshelf in /lib/booksbookshelf.js (see bookshelf.js)
 3. Create pages for the book in /lib/pages, add the pages to the desired book in /lib/books/books.js.
-4. Create an Api that reads the pages in /lib/api. --this section needs to be organized better.
+4. Create an Api that reads the pages in /lib/api. -this section needs to be organized better.
 5. In /lib/routes, add routes to the api location.
 
 Current flow:
@@ -54,5 +54,5 @@ Plans:
 
 Tests:
 
-- npm run test-seed (the seeder to reset the database, and then runs the mocha test).
+- npm run test-seed (the data is reseeded with the test data, and then runs the mocha test) [use if you want to run a clean test].
 - npm run test (runs just the mocha test suite)
