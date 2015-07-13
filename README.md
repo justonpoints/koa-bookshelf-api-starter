@@ -8,10 +8,12 @@ install : node, postrges(create a database)
 3. In Postgres, create a db to connect to.
 3. Add Postgres creds to knexfile.js. (Use the development enviroment to start)
 4. Run the migration to create the desired tables, and seed them. (npm run migration-seed)
-5. node --harmony index.js (in the root of the app, --harmony required since we are using generators)
-6. npm run test (If all green then you are good to go)
+5. Start the app. (npm run app)
+6. Run the test. (npm run test) 
+If all green, then you are good. 
 
 Sample:
+
 	- Login : http://localhost:1337/api/login
 	- Logout : http://localhost:1337/api/logout
 	- Logged in?: http://localhost:1337/api/loggedin 
@@ -21,6 +23,7 @@ Sample:
 	- DELETE User: http://localhost:1337/api/user/{id} (DELETE)
 
 Quick reference to add an api in this enviroment.
+
 1. Create migration file. (add seed data if desired)
 2. Create a book in the /lib/books directory, add the book to the bookshelf in /lib/booksbookshelf.js (see bookshelf.js)
 3. Create pages for the book in /lib/pages, add the pages to the desired book in /lib/books/books.js.
