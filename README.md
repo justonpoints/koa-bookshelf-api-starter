@@ -1,5 +1,5 @@
 # koa-bookshelf-api
-Koa Bookshelf passport starter files
+Koa with Bookshelf and Passport starter files
 
 install : node, postrges(create a database)
 
@@ -28,16 +28,17 @@ Quick reference to add an api in this enviroment.
 2. Create a book in the /lib/books directory, add the book to the bookshelf in /lib/booksbookshelf.js (see bookshelf.js)
 3. Create pages for the book in /lib/pages, add the pages to the desired book in /lib/books/books.js.
 4. Create an Api that reads the pages in /lib/api. --this section needs to be organized better.
-5. In /libs/routes, add routes to the api location.
+5. In /lib/routes, add routes to the api location.
 
-Current flow
-(logger): logs the requests in the console. set to false to turn off.
-(error handler): manages the general error messages. Throws 500 errors for uncaught errors.
-(limiter): basic limiter from koa-better-ratelimit
-(auth): session handler. 
-(public router): Apis that can accessed without a session.
-(authenticated): checks if the provided cookie is contains a open session.
-(router): Apis that require an authenticated session.
+Current flow:
+
+- (logger): logs the requests in the console. set to false to turn off.
+- (error handler): manages the general error messages. Throws 500 errors for uncaught errors.
+- (limiter): basic limiter from koa-better-ratelimit
+- (auth): session handler. 
+- (public router): Apis that can accessed without a session.
+- (authenticated): checks if the provided cookie is contains a open session.
+- (router): Apis that require an authenticated session.
 
 Plans: 
 
@@ -52,5 +53,6 @@ Plans:
 	- All middleware components refrenced in the /lib/nodes/nodes.js file. Each takes at least an "app" depedency from the koa app.
 
 Tests:
-npm run test-seed (the seeder to reset the database, and then runs the mocha test).
-npm run test (runs just the mocha test suite)
+
+- npm run test-seed (the seeder to reset the database, and then runs the mocha test).
+- npm run test (runs just the mocha test suite)
