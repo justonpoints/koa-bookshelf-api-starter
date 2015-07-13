@@ -12,11 +12,13 @@ install : node, postrges(create a database)
 6. npm run test (If all green then you are good to go)
 
 Sample:
-	- Login : http://localhost:1337/api/login 
-	- Create : http://localhost:1337/api/user (Post) {name:string,password:string[min:5]}
-	- SelectById : http://localhost:1337/api/user/{id} (GET)
-	- Update : http://localhost:1337/api/user/{id} (PUT) {name or password} --plan move update password elsewhere.
-	- DELETE : http://localhost:1337/api/user/{id} (DELETE)
+	- Login : http://localhost:1337/api/login
+	- Logout : http://localhost:1337/api/logout
+	- Logged in?: http://localhost:1337/api/loggedin 
+	- Create User: http://localhost:1337/api/user (Post) {name:string,password:string[min:5]}
+	- Select User by id: http://localhost:1337/api/user/{id} (GET)
+	- Update User: http://localhost:1337/api/user/{id} (PUT) {name or password} --plan move update password elsewhere.
+	- DELETE User: http://localhost:1337/api/user/{id} (DELETE)
 
 Quick reference to add an api in this enviroment.
 1. Create migration file. (add seed data if desired)
@@ -41,10 +43,11 @@ Plans:
 3. Add LDAP, Google, Facebook authentication with passport.
 4. expand and stream line testing.
 5. Organize the sessions to add api restrictions per user.
-6. Continue to explore the organzational theory being approached here.
+6. Add https support.
+7. Continue to explore the organzational theory being approached here.
 	- All dependencies declared in the index.js. Dependencies are not declared in the lib files.
 	- All middleware components refrenced in the /lib/nodes/nodes.js file. Each takes at least an "app" depedency from the koa app.
 
 Tests:
-
-npm run test-seed (runs the mocha test suite but runs the seeder to reset the database before the test).
+npm run test-seed (the seeder to reset the database, and then runs the mocha test).
+npm run test (runs just the mocha test suite)
