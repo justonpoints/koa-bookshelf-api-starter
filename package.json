@@ -5,7 +5,7 @@
   "keywords": [
     "koa",
     "api",
-    "postgres",
+    "bookshelf",
     "passport"
   ],
   "main": "index",
@@ -36,5 +36,20 @@
   "engines": {
     "node": ">= 0.11.13"
   },
-  "devDependencies": {}
+  "devDependencies": {
+     "karma": "~0.10",
+     "protractor": "^1.1.1"
+  },
+  "scripts": {
+    
+    "preupdate-webdriver": "npm install",
+    "update-webdriver": "webdriver-manager update",
+
+    "pretest": "npm install",
+    "test": "mocha tests/test.js",
+    "test-single-run": "karma start karma.conf.js  --single-run",
+
+    "pree2e": "npm run update-webdriver",
+    "e2e": "protractor ./tests/protractor.conf.js"
+  }
 }
