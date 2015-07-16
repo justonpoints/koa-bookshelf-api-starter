@@ -34,6 +34,9 @@ var bookshelf = require('./lib/books/bookshelf.js')(Bookshelf,checkit);
 //The collection of queries/pages
 var books = require('./lib/pages/books.js')(bookshelf);
 
+//restrictions
+var restrict = require('./lib/routes/restrict.js')();
+
 //Autentication setup
 var auth = require('./lib/routes/auth')(passport,local,books.auth);//authenticator
 
@@ -47,7 +50,7 @@ var public_api = require('./lib/api/public_api.js')(auth);//api that can accesse
 //initializers
 var app = koa();//Start Koa
 var router = new koa_router(); //this is for the authenticated api
-require('./lib/routes/routes.js')(router, body, api);//intializes routes
+require('./lib/routes/routes.js')(router, body, api, restrict);//intializes routes
 var public_router = new koa_router();//for the non-authenicated api.
 require('./lib/routes/public_routes.js')(public_router, body, public_api);//intialize public routes
 //------------------------------------------------------------------------------------------------------------------------

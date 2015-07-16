@@ -43,8 +43,9 @@ module.exports = function(assert,request){
 		  });
 
 		  it('It should log in', function (done) {
-		      request.post({url:'http://localhost:1337/api/login?username=one&password=password', jar: cookieJar}, function (err, res, body){     
-		        assert.equal('{"success":true}', res.body);
+		      request.post({url:'http://localhost:1337/api/login', json:{username:"one",password:"password"}, jar: cookieJar}, function (err, res, body){     
+		        var data = JSON.stringify(res.body);
+		        assert.equal('{"success":true}', data);
 
 		        request.get({url:'http://localhost:1337/api/loggedin', jar: cookieJar}, function (err, res, body){     
 		        	assert.equal('{"success":"You are logged in"}', res.body);

@@ -14,7 +14,7 @@ If all green, then you are good.
 
 Sample:
 
-	- Login : http://localhost:1337/api/login
+	- Login : http://localhost:1337/api/login  
 	- Logout : http://localhost:1337/api/logout
 	- Logged in?: http://localhost:1337/api/loggedin 
 	- Create User: http://localhost:1337/api/user (Post) {name:string,password:string[min:5]}
