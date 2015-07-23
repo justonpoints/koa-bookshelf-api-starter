@@ -14,7 +14,7 @@ If all green, then you are good.
 
 Sample:
 
-	- Login : http://localhost:1337/api/login  
+	- Login : http://localhost:1337/api/login (Post)
 	- Logout : http://localhost:1337/api/logout
 	- Logged in?: http://localhost:1337/api/loggedin 
 	- Create User: http://localhost:1337/api/user (Post) {name:string,password:string[min:5]}
@@ -52,7 +52,11 @@ Plans:
 	- All dependencies declared in the index.js. Dependencies are not declared in the lib files.
 	- All middleware components refrenced in the /lib/nodes/nodes.js file. Each takes at least an "app" depedency from the koa app.
 
-Tests:
-
-- npm run test-seed (the data is reseeded with the test data, and then runs the mocha test) [use if you want to run a clean test].
-- npm run test (runs just the mocha test suite)
+NPM commands:
+npm run app => starts the app with harmony and strict mode
+npm run upgrade => update the database
+npm run seed => add entries to the database with the files in the seed directory
+npm run rollback => rollback the database
+npm run upgrade-seed => update the database and seed it
+npm run test => run the test
+npm run test-seed => wipe the database, seed it, and run the tests

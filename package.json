@@ -42,16 +42,15 @@
   },
   "scripts": {
 
-    "app":"node --harmony index.js",
-    
-    "preupdate-webdriver": "npm install",
-    "update-webdriver": "webdriver-manager update",
+    "app":"node --harmony --use_strict index.js",
 
-    "migration":"knex migrate:latest",
-    "test-data":"knex seed:run test_data",
+    "upgrade":"knex migrate:latest",
+    "seed":"knex seed:run test_data",
+
+    "rollback":"knex migrate:rollback",
     
-    "migration-seed":"knex migrate:latest",
-    "postmigration-seed":"knex seed:run test_data",
+    "upgrade-seed":"knex migrate:latest",
+    "postupgrade-seed":"knex seed:run test_data",
 
     "pretest": "npm install",
     "test": "mocha tests/test.js",

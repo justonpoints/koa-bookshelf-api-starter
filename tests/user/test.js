@@ -2,7 +2,7 @@ module.exports = function(assert,request){
 
 describe('/api/user', function () {
 
-  require("./secure")(assert,request);
+  require("./secure")(assert,request);//test that the apis are not reachable without an active session.
 
   describe('Active Session', function(){
       var cookieJar = request.jar();
