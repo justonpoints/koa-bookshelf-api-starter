@@ -24,7 +24,7 @@ Sample:
 
 Quick reference to add an api in this enviroment.
 
-1. Create migration file. (add seed data if desired)
+1. Create a migration file. (add seed data if desired)
 2. Create a book in the /lib/books directory, add the book to the bookshelf in /lib/booksbookshelf.js (see bookshelf.js)
 3. Create pages for the book in /lib/pages, add the pages to the desired book in /lib/books/books.js.
 4. Create an Api that reads the pages in /lib/api. -this section needs to be organized better.
@@ -32,12 +32,12 @@ Quick reference to add an api in this enviroment.
 
 Current flow:
 
-- (logger): logs the requests in the console. set to false to turn off.
+- (logger): logs the requests in the console. Set this to false to turn it off.
 - (error handler): manages the general error messages. Throws 500 errors for uncaught errors.
 - (limiter): basic limiter from koa-better-ratelimit
 - (auth): session handler. 
 - (public router): Apis that can accessed without a session.
-- (authenticated): checks if the provided cookie is contains a open session.
+- (authenticated): checks if the provided cookie contains an open session.
 - (router): Apis that require an authenticated session.
 
 Plans: 
@@ -45,12 +45,12 @@ Plans:
 1. Organize Api, and stream line Api creation.
 2. Flush out Migration futher.
 3. Add LDAP, Google, Facebook authentication with passport.
-4. expand and stream line testing.
+4. expand and streamline testing.
 5. Organize the sessions to add api restrictions per user.
 6. Add https support.
 7. Continue to explore the organzational theory being approached here.
-	- All dependencies declared in the index.js. Dependencies are not declared in the lib files.
-	- All middleware components refrenced in the /lib/nodes/nodes.js file. Each takes at least an "app" depedency from the koa app.
+	- All dependencies are declared in the index.js. Dependencies are not declared in the lib files.
+	- All middleware components are refrenced in the /lib/nodes/nodes.js file. Each takes at least an "app" dependency from the koa app.
 
 NPM commands:
 - npm run app => starts the app with harmony and strict mode
